@@ -1,0 +1,72 @@
+<head>
+	<title>Crop Recommendation</title>
+	<style>
+		body {
+			background-image: url("D:\Thesis Final\crop_recommendation\crop_recommendation_app\templates\cropPic.jpg");
+			background-size: cover;
+			background-position: center;
+		}
+		form {
+			margin: 0 auto;
+			width: 50%;
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+		}
+	</style>
+</head>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crop Recommendation</title>
+</head>
+<body>
+	<h1>Crop Recommendation</h1>
+	<form method="POST">
+		{% csrf_token %}
+		<label for="avg_temp">Temperature (in Celsius)</label>
+		<input type="float" id="avg_temp" name="avg_temp" required><br><br>
+		<label for="soil_ph">Soil pH</label>
+		<input type="float" id="soil_ph" name="soil_ph" required><br><br>
+		<label for="season">Season</label>
+		<select id="season" name="season">
+			<option value="summer">Summer</option>
+            <option value="winter">Winter</option>
+		</select><br><br>
+		<label for="soil_texture">Soil Texture</label>
+		<select id="soil_texture" name="soil_texture">
+			<option value="clay">Clay</option>
+			<option value="clay loam">Clay loam</option>
+			<option value="loam">Loam</option>
+            <option value="sandy loam">Sandy Loam</option>
+            <option value="silt loam">Slit loam</option>
+			<option value="silt">Slit</option>
+		</select><br><br>
+		<label for="sowing_month">Sowing Month</label>
+		<select id="sowing_month" name="sowing_month">
+			<option value="mar/apr">March/April</option>
+			<option value="june/july">June/July</option>
+			<option value="Sep/oct">September/October</option>
+			<option value="oct/nov">October/November</option>
+		</select><br><br>
+		<label for="place">Place</label>
+		<select id="place" name="place">
+			<option value="baglung">baglung</option>
+			<option value="lamjung">lamjung</option>
+			<option value="syangja">syangja</option>
+			<option value="gorkha">gorkha</option>
+			<option value="tanahu">tanahu</option>
+		</select><br><br>
+		<label for="crop_type">Crop Type</label>
+		<select id="crop_type" name="crop_type">
+			<option value="cereals">Cereals</option>
+			<option value="other">Other</option>
+		</select><br><br>
+		<input type="submit" value="Get Crop Recommendation">
+	</form>
+</body>
+</html>

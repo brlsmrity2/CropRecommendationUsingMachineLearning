@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crop Recommendation</title>
+</head>
+<body>
+	<h1>Crop Recommendation</h1>
+	{% if crop_pred %}
+		<h2>Recommended Crop: {{ crop_pred }} for location {{place}}</h2>
+		<h2>yield of Crop: {{ yield_pred }}mt/hec</h2>
+		<h2>price of Crop: {{ price_pred }}NRs/mt</h2>
+	{% else %}
+		<p>No crop recommendation found for the given inputs.</p>
+	{% endif %}
+	<a href="{% url 'index' %}">Try Again</a>
+</body>
+</html>
