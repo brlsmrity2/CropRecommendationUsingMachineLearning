@@ -1,14 +1,7 @@
 import joblib
 from django.shortcuts import render
 import pandas as pd
-import numpy as np
 
-import joblib
-from django.shortcuts import render
-
-
-from django.shortcuts import render
-import pandas as pd
 
 def index(request):
     if request.method == 'POST':
@@ -19,7 +12,7 @@ def index(request):
             soil_texture = request.POST.get('soil_texture')
             sowing_month = request.POST.get('sowing_month')
             place = request.POST.get('place')
-            place_hold=place
+            place_hold = place
             crop_type = request.POST.get('crop_type')
 
             # Create a new dataframe with default values of 0
@@ -39,42 +32,27 @@ def index(request):
             new_data.loc[0, place] = 1
             new_data.loc[0, crop_type] = 1
 
-            print(new_data)
+            # print(new_data)
             # Load the trained model and get crop recommendation
             model = pd.read_pickle('randomforest.pkl')
             crop_pred = model.predict(new_data)[0]
-            #print(crop_pred)
-            crop_data=pd.read_excel("crop_details.xlsx")
-            yield_pred = crop_data.loc[(crop_data['Crop'] == crop_pred) & (crop_data['Place'] == place_hold), 'Yield'].iloc[0]
-            price_pred = crop_data.loc[(crop_data['Crop'] == crop_pred) & (crop_data['Place'] == place_hold), 'Price'].iloc[0]
+            # print(crop_pred)
+            crop_data = pd.read_excel("crop_details.xlsx")
+            yield_pred = crop_data.loc[(crop_data['Crop'] == crop_pred) & (
+                crop_data['Place'] == place_hold), 'Yield'].iloc[0]
+            price_pred = crop_data.loc[(crop_data['Crop'] == crop_pred) & (
+                crop_data['Place'] == place_hold), 'Price'].iloc[0]
 
             # print(yield_pred)
             # print(price_pred)
             # Render the output template with the crop prediction and retrieved crop data
-            return render(request, 'output.html', {'crop_pred': crop_pred,'place':place_hold, 'yield_pred': yield_pred, 'price_pred': price_pred})
+            return render(request, 'output.html', {'crop_pred': crop_pred, 'place': place_hold, 'yield_pred': yield_pred, 'price_pred': price_pred})
 
         except:
             return render(request, 'index.html', {'error_msg': 'No crops for given input'})
 
     else:
         return render(request, 'index.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # # Define a function to preprocess the input data
@@ -135,12 +113,11 @@ def index(request):
 #         model = joblib.load('randomforest.pkl')
 
 
-
 #         # Preprocess the input data
 #         input_data = {'avg_temp': avg_temp, 'soil_ph': soil_ph, 'season': season,
 #                       'soil_texture': soil_texture, 'sowing_month': sowing_month,
 #                       'place': place, 'crop_type': crop_type}
-        
+
 #         input_data = pd.DataFrame([input_data])
 #         input_data = input_data.join(pd.get_dummies(input_data['place']))
 #         input_data = input_data.join(pd.get_dummies(input_data['soil_texture']))
@@ -167,7 +144,6 @@ def index(request):
 #         # input_df = input_df.drop(columns=categorical_cols)
 
 
-
 #         # # Get the prediction
 #         # X = input_data.values.reshape(1, -1)
 #         y_pred = model.predict(input_data)
@@ -179,15 +155,11 @@ def index(request):
 #     return render(request, 'index.html')
 
 
-
-
-
-
 #         #season
 # #         if input_df['summer']== 1:
 # #             input_df['winter']=0
 
-        
+
 # #         # if season=='winter':
 # #         #     input_df['winter']=1
 # #         # else:
@@ -200,7 +172,7 @@ def index(request):
 # #         else:
 # #             input_df['clay']=0
 
-        
+
 # #         if soil_texture=='clay loam':
 # #             input_df['clay loam']=1
 # #         else:
@@ -211,7 +183,7 @@ def index(request):
 # #         else:
 # #             input_df['sandy clay loam']=0
 
-        
+
 # #         if soil_texture=='loam':
 # #             input_df['loam']=1
 # #         else:
@@ -222,7 +194,7 @@ def index(request):
 # #         else:
 # #             input_df['sandy loam']=0
 
-        
+
 # #         if soil_texture=='silt loam':
 # #             input_df['silt loam']=1
 # #         else:
@@ -235,7 +207,7 @@ def index(request):
 
 
 # # #sowing_month
-        
+
 # #         if sowing_month=='mar/apr':
 # #             input_df['mar/apr']=1
 # #         else:
@@ -246,7 +218,7 @@ def index(request):
 # #         else:
 # #             input_df['june/july']=0
 
-        
+
 # #         if sowing_month=='Sep/oct':
 # #             input_df['Sep/oct']=1
 # #         else:
@@ -268,7 +240,7 @@ def index(request):
 # #         else:
 # #             input_df['gorkha']=0
 
-        
+
 # #         if place=='lamjung':
 # #             input_df['lamjung']=1
 # #         else:
@@ -279,7 +251,7 @@ def index(request):
 # #         else:
 # #             input_df['tanahu']=0
 
-        
+
 # #         if place=='syangja':
 # #             input_df['syangja']=1
 # #         else:
@@ -294,7 +266,7 @@ def index(request):
 # #         else:
 # #             input_df['cereals']=0
 
-        
+
 # #         if crop_type=='other':
 # #             input_df['other']=1
 # #         else:
