@@ -43,13 +43,13 @@ def index(request):
             # Load the trained model and get crop recommendation
             model = pd.read_pickle('randomforest.pkl')
             crop_pred = model.predict(new_data)[0]
-            print(crop_pred)
+            #print(crop_pred)
             crop_data=pd.read_excel("crop_details.xlsx")
             yield_pred = crop_data.loc[(crop_data['Crop'] == crop_pred) & (crop_data['Place'] == place_hold), 'Yield'].iloc[0]
             price_pred = crop_data.loc[(crop_data['Crop'] == crop_pred) & (crop_data['Place'] == place_hold), 'Price'].iloc[0]
 
-            print(yield_pred)
-            print(price_pred)
+            # print(yield_pred)
+            # print(price_pred)
             # Render the output template with the crop prediction and retrieved crop data
             return render(request, 'output.html', {'crop_pred': crop_pred,'place':place_hold, 'yield_pred': yield_pred, 'price_pred': price_pred})
 
