@@ -80,15 +80,15 @@
 	<h1>Crop Recommendation</h1>
 	<form method="POST">
 		{% csrf_token %}
-		<label for="avg_temp">Temperature (in Celsius)</label>
-		<input type="float" id="avg_temp" name="avg_temp" required><br><br>
+		 {% comment %} <label for="avg_temp">Temperature (in Celsius)</label>
+		<input type="float" id="avg_temp" name="avg_temp" required><br><br>  {% endcomment %}
 		<label for="soil_ph">Soil pH</label>
 		<input type="float" id="soil_ph" name="soil_ph" required><br><br>
-		<label for="season">Season</label>
+		{% comment %} <label for="season">Season</label>
 		<select id="season" name="season">
 			<option value="summer">Summer</option>
             <option value="winter">Winter</option>
-		</select><br><br>
+		</select><br><br>  {% endcomment %}
 		<label for="soil_texture">Soil Texture</label>
 		<select id="soil_texture" name="soil_texture">
 			<option value="clay">Clay</option>

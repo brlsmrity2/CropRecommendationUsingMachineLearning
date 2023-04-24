@@ -11,7 +11,7 @@
 		h1 {
 			color: #006600;
 			font-size: 36px;
-			text-align: center;
+			{% comment %} text-align: center; {% endcomment %}
 			margin-top: 50px;
 			margin-bottom: 50px;
 			text-shadow: 2px 2px #CCCCCC;
@@ -19,14 +19,16 @@
 		h2 {
 			color: #333333;
 			font-size: 24px;
-			margin-top: 20px;
-			margin-bottom: 10px;
+			{% comment %} text-align: center; {% endcomment %}
+			margin-top: 50px;
+			margin-bottom: 50px;
 			text-shadow: 1px 1px #CCCCCC;
 		}
 		p {
 			font-size: 18px;
-			margin-top: 20px;
-			margin-bottom: 10px;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			{% comment %} text-align: center; {% endcomment %}
 		}
 		a {
 			display: inline-block;
@@ -36,8 +38,9 @@
 			padding: 10px 20px;
 			border-radius: 5px;
 			text-decoration: none;
-			margin-top: 20px;
+			margin-top: 50px;
 			box-shadow: 2px 2px #CCCCCC;
+			text-align: center;
 		}
 		a:hover {
 			background-color: #003300;
@@ -48,8 +51,8 @@
 	<h1>Crop Recommendation</h1>
 	{% if crop_pred %}
 		<h2>Recommended Crop: {{ crop_pred }} for location {{place}}</h2>
-		<h2>yield of Crop: {{ yield_pred }}mt/hec</h2>
-		<h2>price of Crop: {{ price_pred }}NRs/mt</h2>
+		<h2>Yield of Crop: {{ yield_pred }}mt/hec</h2>
+		<h2>Price of Crop: {{ price_pred }}NRs/mt</h2>
 	{% else %}
 		<p>No crop recommendation found for the given inputs.</p>
 	{% endif %}
